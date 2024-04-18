@@ -1,0 +1,110 @@
+---
+import { changeLanguage } from "i18next";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import Pricing from "@components/pricing.astro";
+import Logos from "@components/logos.astro";
+import Faq from "@components/faq.astro";
+import Tabs from "@components/Tab.js";
+
+changeLanguage("en");
+
+const pricingData = [
+    {
+        name: "Personal",
+        price: "Free",
+        popular: false,
+        features: ["Lifetime free", "Up to 3 users", "Unlimited Pages", "Astro Sub domain", "Basic Integrations", "Community Support"],
+        button: {
+            text: "Get Started",
+            link: "/",
+        },
+    },
+    {
+        name: "Startup",
+        price: {    
+            monthly: "$19",
+            annual: "$16",
+            discount: "10%",
+            original: "$24",
+        },
+        popular: true,
+        features: [
+            "All Free Features",
+            "Up to 20 users",
+            "20 Custom domains",
+            "Unlimited Collaborators",
+            "Advanced Integrations",
+            "Priority Support",
+        ],
+        button: {
+            text: "Get Started",
+            link: "#",
+        },
+    },
+    {
+        name: "Enterprise",
+        price: "Custom",
+        popular: false,
+        features: ["All Pro Features", "Unlimited Custom domains", "99.99% Uptime SLA", "SAML & SSO Integration", "24/7 Phone Support"],
+        button: {
+            text: "Contact us",
+            link: "/contact",
+        },
+    },
+];
+---
+
+<Layout title="Pricing">
+	<Container>
+		<Sectionhead>
+			<Fragment slot="title">Pricing</Fragment>
+			<Fragment slot="desc">Affordable Excellence: See Our Pricing.</Fragment>
+		</Sectionhead>
+
+		<div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-20">
+			{pricingData.map((item) => <Pricing plan={item} />)}
+		</div>
+		<!-- <Logos /> -->
+
+		<Faq />
+        <div x-data="{ openTab: 1 }" class="p-6">
+            <!-- Tabs -->
+            <ul class="flex border-b">
+              <li class="-mb-px mr-1" :class="{ 'border-l border-t border-r rounded-t text-blue-700': openTab === 1 }">
+                <a :class="{ 'text-blue-600': openTab !== 1 }" class="bg-white inline-block py-2 px-4 font-semibold" @click="openTab = 1" href="#">
+                  <i class="fas fa-star"></i> Tab 1
+                </a>
+              </li>
+              <li class="mr-1" :class="{ 'border-l border-t border-r rounded-t text-blue-700': openTab === 2 }">
+                <a :class="{ 'text-blue-600': openTab !== 2 }" class="bg-white inline-block py-2 px-4 font-semibold" @click="openTab = 2" href="#">
+                  <i class="fas fa-moon"></i> Tab 2
+                </a>
+              </li>
+              <li class="mr-1" :class="{ 'border-l border-t border-r rounded-t text-blue-700': openTab === 3 }">
+                <a :class="{ 'text-blue-600': openTab !== 3 }" class="bg-white inline-block py-2 px-4 font-semibold" @click="openTab = 3" href="#">
+                  <i class="fas fa-rocket"></i> Tab 3
+                </a>
+              </li>
+            </ul>
+          
+            <!-- Tab Contents -->
+            <div class="w-full pt-4">
+              <div x-show="openTab === 1">
+                <p>ola eheufbeubfuierbifwrbfiuwre</p>
+              </div>
+              <div x-show="openTab === 2" style="display: none;">
+                <p></p>
+              </div>
+              <div x-show="openTab === 3" style="display: none;">
+                <p>Content of Tab 3</p>
+              </div>
+            </div>
+          </div>
+          
+        
+	</Container>
+
+              
+</Layout>

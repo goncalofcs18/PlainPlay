@@ -1,0 +1,101 @@
+---
+// @ts-ignore
+import { Icon } from "astro-icon";
+import Link from "@components/ui/link.astro";
+import { localizePath } from "astro-i18next";
+import { t } from "i18next";
+
+const features = [
+	{
+		title: "Apostas Desportivas",
+		description: "Na Plain Play podes fazer apostas em vários desportos, como Futebol, Basquetebol, Ténis e até E-Sports de forma simples!",
+		icon: "bx:bxs-window-alt",
+		url: "/pricing",
+	},
+	{
+		title: "Casino Online",
+		description: "Na Plain Play encontras tudo acerca dos jogos de Casino Online mais populares. Apresentamos-te as melhores Slots e os melhores jogos do mercado!",
+		icon: "bx:bxs-data",
+		url: "/casino",
+	},
+	{
+		title: "Regras e Dicas",
+		description: "Apresentamos-te tudo o que precisas de saber para teres a melhor experiência possível e aprenderes tudo sobre o mundo das apostas!",
+		icon: "bx:bxs-file-find",
+		url: "/blog",
+	},
+	{
+		title: "Localization",
+		description: "features.localization",
+		icon: "bx:bxs-bot",
+		url: "https://github.com/yassinedoghri/astro-i18next",
+	},
+	{
+		title: "Light/Dark Mode",
+		description: "features.light_dark_mode",
+		icon: "bx:bxs-file-find",
+		url: "https://tailwindcss.com/docs/dark-mode",
+	},
+	{
+		title: "Giscus",
+		description: "features.giscus",
+		icon: "bx:bxs-user",
+		url: "https://giscus.app/",
+	},
+	{
+		title: "Decap CMS",
+		description: "features.decapcms",
+		icon: "bx:bxs-user",
+		url: "https://decapcms.org/",
+	},
+	{
+		title: "RSS feed",
+		description: "features.rss",
+		icon: "bx:bxs-user",
+		url: "/rss.xml",
+	},
+	{
+		title: "Article generator (soon)",
+		description: "features.articlegenerator",
+		icon: "bx:bxs-user",
+		url: "#",
+	},
+];
+---
+
+<div class="relative mx-auto max-w-7xl px-6 lg:px-8">
+	<div class="mx-auto max-w-5xl lg:text-center">
+		<h2 class="text-base font-semibold leading-7 text-black dark:text-white">{t("")}</h2>
+		<p class="mt-2 text-3xl font-bold tracking-tight text-black dark:text-white sm:text-4xl">{t("Um site feito a pensar em si!")}</p>
+		<p class="mt-6 text-lg leading-8 text-gray-900 dark:text-gray-100">
+			{t("Somos mais do que apenas um site de apostas online, somos uma plataforma dedicada a proporcionar a melhor experiência possível aos nossos utilizadores. Cada aspecto do nosso site foi projetado com o conforto e a satisfação do utilizador em mente. Oferecemos uma ampla variedade de mercados de apostas em desportos tradicionais e E-Sports, com probabilidades competitivas e opções flexíveis de apostas. Além disso, fornecemos recursos educacionais e ferramentas de gerenciamento de apostas para capacitar os  utilizadores a fazerem escolhas informadas. Junte-se a nós e descubra uma nova era de apostas online, onde a sua experiência é a nossa principal preocupação.")}
+		</p>
+	</div>
+	<div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+		<dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+			{
+				features.map((item) => (
+					<div class="flex flex-col">
+						<dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-black dark:text-white">
+							<div class="h-5 w-5 flex-none text-black dark:text-white">
+								<Icon name={item.icon} />
+							</div>
+							{item.title}
+						</dt>
+						<dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-900 dark:text-gray-100">
+							<p class="flex-auto">{t(item.description)}</p>
+							<p class="mt-6">
+								<Link href={item.url} style="muted" size="xs" class="leading-6 text-left text-black dark:text-white">
+									{t("Descobre mais")}{" "}
+									<span class="pl-1 text-black dark:text-white" aria-hidden="true">
+										→
+									</span>
+								</Link>
+							</p>
+						</dd>
+					</div>
+				))
+			}
+		</dl>
+	</div>
+</div>

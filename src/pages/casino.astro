@@ -1,0 +1,281 @@
+---
+import { changeLanguage } from "i18next";
+import { Icon } from "astro-icon";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import Button from "@components/ui/button.astro";
+import Contactform from "@components/contactform.astro";
+
+changeLanguage("en");
+
+let contacts = [
+    {
+        title: "Marketing",
+        email: "test@yourcompany.com",
+        phone: "+1 (555) 555-5555",
+    },
+    {
+        title: "Human Resources",
+        email: "test@yourcompany.com",
+        phone: "+1 (555) 555-5555",
+    },
+    {
+        title: "Finance",
+        email: "test@yourcompany.com",
+        phone: "+1 (555) 555-5555",
+    },
+    {
+        title: "Research and Development",
+        email: "test@yourcompany.com",
+        phone: "+1 (555) 555-5555",
+    },
+];
+---
+
+<Layout title="Contact">
+	<Container>
+		
+		<Sectionhead>
+			<Fragment slot="title">Jogos de Casino Online</Fragment>
+			<Fragment slot="desc">Aqui podes encontrar os melhores e mais confiáveis jogos de Casino Online</Fragment>
+		</Sectionhead>
+
+		<div class="container mx-auto p-4" x-data="{ openRules: null, openTips: null, showPopup: false }">
+			<!-- Jogo: Bubble Blast -->
+			<div class="flex mb-6 bg-white shadow-lg rounded-lg overflow-hidden dark:invert">
+			  <div class="flex-grow p-4 flex flex-col justify-between">
+				<div>
+				  <h2 class="text-2xl font-bold mb-2">Ultra Burst</h2>
+				  <p class="mb-4">Ultra Burst é uma slot com poucas linhas de pagamentos e símbolos, gráficos simples e que tinha tudo para ser um jogo clássico, mas possui características especiais. O provedor Red Rake incluiu a expansão aleatória para 234 linhas de pagamentos acrescida de multiplicadores de até 5x, o que expande as possibilidades de ganho.</p>
+				</div>
+				<div>
+				  <div class="flex items-start mb-3">
+					<!-- Botão Jogar -->
+					<button @click="showPopup = true" class="px-6 py-2 bg-gray-800 text-white rounded hover:bg-gray-500 focus:outline-none mr-2">Jogar</button>
+					<!-- Regras -->
+					<div class="flex flex-col">
+					  <button @click="openRules = openRules === 'bubbleRules' ? null : 'bubbleRules'" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 focus:outline-none">Regras</button>
+					  <div x-show="openRules === 'bubbleRules'" x-collapse class="mt-2 bg-gray-50 border rounded shadow p-4">
+						<p>Pode-se dizer que o provedor Red Rake Gaming inovou ao mesmo tempo em que arriscou com a slot Ultra Burst. O risco se deve a ser mais um jogo com características comuns às slots clássicas, algo que também alguns jogos modernos têm feito. Seria só mais um, com um RTP de 95,4 abaixo da média e quadro 5×3.
+
+							No entanto, as 5 linhas de pagamento podem se tornar 243 a qualquer momento. Isto ocorre quando o Ultra Burst é ativado. Em adição a isto, cada combinação resultante eleva um multiplicador em 1 ponto até o máximo de 5x.
+							
+							Ganhos e melhores símbolos
+							O máximo de ganho que se pode obter é de 1.200x a sua aposta graças à ativação do recurso Ultra Burst. Uma vez que ele é completamente aleatório, não há como saber quando ele poderá aparecer. Seja durante a sua ativação ou nas rodadas comuns, a tabela abaixo pode ajudar a entender os ganhos.
+							Para ajudar nas combinações, a slot Ultra Burst também possui um Wild. No entanto, o Wild é o próprio símbolo Ultra Burst e, sempre que ele se envolve num ganho, o recurso especial é ativado.
+							
+							</p>
+					  </div>
+					</div>
+					<!-- Dicas -->
+					<div class="flex flex-col ml-2">
+					  <button @click="openTips = openTips === 'bubbleTips' ? null : 'bubbleTips'" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 focus:outline-none">Dicas</button>
+					  <div x-show="openTips === 'bubbleTips'" x-collapse class="mt-2 bg-gray-50 border rounded shadow p-4">
+						<p>O único bónus disponível na slot Ultra Burst é o recurso especial que dá nome ao jogo. Ele é ativado sempre que o símbolo Wild aparece nos cilindros centrais e se torna parte de uma combinação. Esta combinação específica é eliminada, o que abre espaço para mais símbolos e possíveis combinações.
+
+							Ativa-se, então, uma rodada grátis com o multiplicador em 1x. Caso o jogador consiga outra combinação, ganha-se mais uma rodada grátis e o multiplicador sobe para 2x. Isto se repete a cada combinação, até que o multiplicador atinja 5x e o bónus termine.
+							
+							Ou seja, caso tenha a sorte de conseguir uma sequência de ganhos, o jogador terá recebido também um total de 5 rodadas grátis. No entanto, vale destacar que o bónus está realmente condicionado às combinações. Caso não obtenha uma, o bónus é encerrado.</p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			  <!-- Espaço para Imagem -->
+			  <div class="flex-none p-4">
+				<img src="https://staticwww.redrakegaming.com/img/slots/ultraburst/main/en/ultra-burst.webp" class="dark:invert alt="Ultra Burst Game Image" class="rounded mb-3" style="width: 300px;">
+			  </div>
+			</div>
+			
+			<!-- Pop-up para Jogar -->
+			<div x-show="showPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+			  <div class="bg-white p-6 rounded shadow-lg max-w-lg w-full">
+				<h3 class="text-2xl font-bold mb-4">Pronto para Jogar?</h3>
+				<p>Estás prestes a ser redirecionado para uma experiência incrível com o Ultra Burst. Prepare-se para a diversão!</p>
+				<div class="mt-6">
+				  <a href="https://www.onlinecasinosportugal.pt/slots/ultra-burst/" target="_blank" class="px-6 py-2 bg-red-500 text-white rounded hover:bg-red-700 focus:outline-none">Ir para o Jogo</a>
+				  <button @click="showPopup = false" class="ml-4 px-6 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 focus:outline-none">Cancelar</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  
+		  <!-- Inclua o Alpine.js -->
+		  <script src="//unpkg.com/alpinejs" defer></script>
+
+		  <div class="container mx-auto p-4" x-data="{ openRules: null, openTips: null, showPopup: false }">
+			<!-- Jogo: Bubble Blast -->
+			<div class="flex mb-6 bg-white shadow-lg rounded-lg overflow-hidden dark:invert">
+			  <div class="flex-grow p-4 flex flex-col justify-between">
+				<div>
+				  <h2 class="text-2xl font-bold mb-2">88 Fortunes</h2>
+				  <p class="mb-4">O 88 Fortunes é um jogo de slot machines originário dos casinos de Macau e cuja popularidade tem vindo a crescer um pouco por todo o mundo, através da ubiquidade dos casinos online. O tema inspira-se na simbologia tradicional chinesa, em especial no carácter atribuído ao número 8 enquanto símbolo de sorte e prosperidade.</p>
+				</div>
+				<div>
+				  <div class="flex items-start mb-3">
+					<!-- Botão Jogar -->
+					<button @click="showPopup = true" class="px-6 py-2 bg-gray-800 text-white rounded hover:bg-gray-500 focus:outline-none mr-2">Jogar</button>
+					<!-- Regras -->
+					<div class="flex flex-col">
+					  <button @click="openRules = openRules === 'bubbleRules' ? null : 'bubbleRules'" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 focus:outline-none">Regras</button>
+					  <div x-show="openRules === 'bubbleRules'" x-collapse class="mt-2 bg-gray-50 border rounded shadow p-4">
+						<p>
+							O jogo, que oferece 243 combinações de vitória, apresenta versões “standard” e “ouro” de vários ícones, nomeadamente a tartaruga, o barco, o cálice, a ave e a moeda. Destaque especial para o morcego “Wild Fu”, considerado um símbolo especial de sorte, e que funciona como “joker”, podendo substituir todos os restantes.
+							As apostas começam nos $0,88 e terminam nos $88,00. Dada a predominância “mágica” do número 8 neste jogo, poder-se-ia pensar que a taxa RTP (o “retorno ao jogador”, isto é, a “odd” de prémios previamente definida) devia também acabar no algarismo 8; o facto de ser 96% seria assim um erro. Todavia, 96% é precisamente um múltiplo de 8 (12 x 8), o que vem adensar um pouco mais a aura de mistério em torno do 88 Fortunes.
+							
+							
+							</p>
+					  </div>
+					</div>
+					<!-- Dicas -->
+					<div class="flex flex-col ml-2">
+					  <button @click="openTips = openTips === 'bubbleTips' ? null : 'bubbleTips'" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 focus:outline-none">Dicas</button>
+					  <div x-show="openTips === 'bubbleTips'" x-collapse class="mt-2 bg-gray-50 border rounded shadow p-4">
+						<p>Existem quatro jackpots, com o jogador a poder qualificar-se para os jackpots mais elevados se a sua aposta for mais elevada também.
+
+						</p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			  <!-- Espaço para Imagem -->
+			  <div class="flex-none p-4">
+				<img src="https://images.ctfassets.net/93v9a59si7ol/7La9MlJdrboWtNN6kQWBLo/9f579e174d85839881785ec582416700/88_Fortunes.png" class="dark:invert" alt="Ultra Burst Game Image" class="rounded mb-3"  style="width: 300px;">
+			  </div>
+			</div>
+			
+			<!-- Pop-up para Jogar -->
+			<div x-show="showPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+			  <div class="bg-white p-6 rounded shadow-lg max-w-lg w-full">
+				<h3 class="text-2xl font-bold mb-4">Pronto para Jogar?</h3>
+				<p>Estás prestes a ser redirecionado para uma experiência incrível com o 88 Fortunes. Prepare-se para a diversão!</p>
+				<div class="mt-6">
+				  <a href="https://www.onlinecasinosportugal.pt/slots/88-fortunes/" target="_blank" class="px-6 py-2 bg-red-500 text-white rounded hover:bg-red-700 focus:outline-none">Ir para o Jogo</a>
+				  <button @click="showPopup = false" class="ml-4 px-6 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 focus:outline-none">Cancelar</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  
+		  <!-- Inclua o Alpine.js -->
+		  <script src="//unpkg.com/alpinejs" defer></script>
+
+		  <div class="container mx-auto p-4" x-data="{ openRules: null, openTips: null, showPopup: false }">
+			<!-- Jogo: Bubble Blast -->
+			<div class="flex mb-6 bg-white shadow-lg rounded-lg overflow-hidden dark:invert">
+			  <div class="flex-grow p-4 flex flex-col justify-between">
+				<div>
+				  <h2 class="text-2xl font-bold mb-2">Fortune Tiger</h2>
+				  <p class="mb-4">Fortune Tiger é um jogo de slot de grande sucesso desenvolvido pela PGSoft, um provedor com enorme reputação entre os jogadores. Esta slot de inspiração asiática está a ter um enorme sucesso no Brasil, sendo um dos jogos mais populares do momento.
+
+					Com o tigre como protagonista principal, um RTP atrativo e uma funcionalidade de bónus única, Fortune Tiger prepara-se para conquistar os jogadores portugueses.</p>
+				</div>
+				<div>
+				  <div class="flex items-start mb-3">
+					<!-- Botão Jogar -->
+					<button @click="showPopup = true" class="px-6 py-2 bg-gray-800 text-white rounded hover:bg-gray-500 focus:outline-none mr-2">Jogar</button>
+					<!-- Regras -->
+					<div class="flex flex-col">
+					  <button @click="openRules = openRules === 'bubbleRules' ? null : 'bubbleRules'" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 focus:outline-none">Regras</button>
+					  <div x-show="openRules === 'bubbleRules'" x-collapse class="mt-2 bg-gray-50 border rounded shadow p-4">
+						<p>O jogo apresenta um formato 3×3 com apenas cinco linhas de pagamento e um prémio máximo de 2500x. Outras características relevantes são o seu RTP atrativo de 96,81% e a volatilidade média que apresenta.
+
+							Quanto aos símbolos, inclui símbolos como frutas, escudos e sacos, com prémios potenciais que variam entre 0,6x e 20x. O símbolo Fortune Tiger Wild paga 50 vezes a aposta efectuada. O símbolo menos atrativo é a laranja, que oferece 0,3x a aposta por linha. Já uma linha completa de Wilds, pode recompensar os jogadores com até 25x a sua aposta.
+							</p>
+					  </div>
+					</div>
+					<!-- Dicas -->
+					<div class="flex flex-col ml-2">
+					  <button @click="openTips = openTips === 'bubbleTips' ? null : 'bubbleTips'" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 focus:outline-none">Dicas</button>
+					  <div x-show="openTips === 'bubbleTips'" x-collapse class="mt-2 bg-gray-50 border rounded shadow p-4">
+						<p>O bónus do Fortune Tiger pode ser ativado a qualquer momento, o que marca a diferença em relação às habituais rodadas grátis. Quando o bónus é ativado, o Tigre atribui uma carta aleatoriamente que pode conter qualquer um dos símbolos do jogo.
+
+							Se os jogadores receberem pelo menos um símbolo escolhido ou um Wild, estes tornam-se fixos e as restantes posições voltam a girar. Este processo pode repetir-se e o multiplicador de ganhos de 10x pode entrar em ação.</p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			  <!-- Espaço para Imagem -->
+			  <div class="flex-none p-4">
+				<img src="https://mundial.fm.br/wp-content/uploads/2023/09/fortune-e1690566851120.jpg"  class="dark:invert" alt="Ultra Burst Game Image" class="rounded mb-3" style="width: 300px;">
+			  </div>
+			</div>
+			
+			<!-- Pop-up para Jogar -->
+			<div x-show="showPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+			  <div class="bg-white p-6 rounded shadow-lg max-w-lg w-full">
+				<h3 class="text-2xl font-bold mb-4">Pronto para Jogar?</h3>
+				<p>Estás prestes a ser redirecionado para uma experiência incrível com o Fortune Tiger. Prepare-se para a diversão!</p>
+				<div class="mt-6">
+				  <a href="https://www.onlinecasinosportugal.pt/slots/fortune-tiger-pg-soft/" target="_blank" class="px-6 py-2 bg-red-500 text-white rounded hover:bg-red-700 focus:outline-none">Ir para o Jogo</a>
+				  <button @click="showPopup = false" class="ml-4 px-6 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 focus:outline-none">Cancelar</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  
+		  <!-- Inclua o Alpine.js -->
+		  <script src="//unpkg.com/alpinejs" defer></script>
+
+		  <div class="container mx-auto p-4" x-data="{ openRules: null, openTips: null, showPopup: false }">
+			<!-- Jogo: Bubble Blast -->
+			<div class="flex mb-6 bg-white shadow-lg rounded-lg overflow-hidden dark:invert">
+			  <div class="flex-grow p-4 flex flex-col justify-between">
+				<div>
+				  <h2 class="text-2xl font-bold mb-2">The Book of Rah</h2>
+				  <p class="mb-4">A história do Antigo Egito serve de tema e inspiração ao jogo “Book of Ra” (“O Livro de Rá, em português). O jogador sente-se na pele dos modernos arqueólogos que partem em busca dos tesouros místicos e milionários das pirâmides e cidades de uma das civilizações mais antigas do mundo. Os efeitos sonoros, os símbolos e as animações recriam a atmosfera que envolve o jogador, a caminho dos grandes prémios. Além das esfinges e das figuras de faraós, nem sequer falta um explorador incrivelmente parecido com o célebre Indiana Jones do cinema.</p>
+				</div>
+				<div>
+				  <div class="flex items-start mb-3">
+					<!-- Botão Jogar -->
+					<button @click="showPopup = true" class="px-6 py-2 bg-gray-800 text-white rounded hover:bg-gray-500 focus:outline-none mr-2">Jogar</button>
+					<!-- Regras -->
+					<div class="flex flex-col">
+					  <button @click="openRules = openRules === 'bubbleRules' ? null : 'bubbleRules'" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 focus:outline-none">Regras</button>
+					  <div x-show="openRules === 'bubbleRules'" x-collapse class="mt-2 bg-gray-50 border rounded shadow p-4">
+						<p>O jogador começa por selecionar o número de linhas de pagamento e colocar a sua aposta (de modo a maximizar as probabilidades de ganhar). O Livro de Rá apresenta 5 rodas (reels), 3 linhas e 9 linhas de pagamento. Os limites de apostas vão entre 1 a 900 moedas por jogada, sendo este um jogo atípico neste sentido, e especialmente indicado para quem procura jogar com um orçamento baixo.
+							Preste atenção especial ao símbolo Scatter. Além de servir como “joker”, substituindo os restantes símbolos para que sejam encontradas combinações vencedoras, o Scatter dá acesso a jogadas grátis. Se encontrar três ou mais Scatters, terá direito a dez jogadas gratuitas.
+							</p>
+					  </div>
+					</div>
+					<!-- Dicas -->
+					<div class="flex flex-col ml-2">
+					  <button @click="openTips = openTips === 'bubbleTips' ? null : 'bubbleTips'" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 focus:outline-none">Dicas</button>
+					  <div x-show="openTips === 'bubbleTips'" x-collapse class="mt-2 bg-gray-50 border rounded shadow p-4">
+						<p>O jogo mini bónus permite ao jogador tentar aumentar os seus ganhos a qualquer momento. Só é preciso adivinhar qual a cor da última carta do baralho. Se acertar, poderá levar o seu prémio ou jogar novamente. Atenção: se falhar, os potenciais prémios dessa jogada serão perdidos.</p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			  <!-- Espaço para Imagem -->
+			  <div class="flex-none p-4">
+				<img src="https://casinorange.com/wp-content/uploads/2023/1/Book_of_Ra_Magic_Slot.2e16d0ba.fill-600x340.webp" class="dark:invert" alt="Ultra Burst Game Image" class="rounded mb-3" style="width: 300px;">
+			  </div>
+			</div>
+			
+			<!-- Pop-up para Jogar -->
+			<div x-show="showPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+			  <div class="bg-white p-6 rounded shadow-lg max-w-lg w-full">
+				<h3 class="text-2xl font-bold mb-4">Pronto para Jogar?</h3>
+				<p>Estás prestes a ser redirecionado para uma experiência incrível com o The Book of Rah. Prepare-se para a diversão!</p>
+				<div class="mt-6">
+				  <a href="https://www.onlinecasinosportugal.pt/slots/fortune-tiger-pg-soft/" target="_blank" class="px-6 py-2 bg-red-500 text-white rounded hover:bg-red-700 focus:outline-none">Ir para o Jogo</a>
+				  <button @click="showPopup = false" class="ml-4 px-6 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 focus:outline-none">Cancelar</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  
+		  <!-- Inclua o Alpine.js -->
+		  <script src="//unpkg.com/alpinejs" defer></script>
+		  
+		
+		  
+		  
+			  
+	</Container>
+</Layout>
