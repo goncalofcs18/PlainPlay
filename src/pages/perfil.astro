@@ -1,0 +1,212 @@
+---
+import { changeLanguage } from "i18next";
+import { Icon } from "astro-icon";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import Button from "@components/ui/button.astro";
+import 'flowbite';
+import { localizePath } from "astro-i18next";
+
+
+changeLanguage("en");
+
+
+
+
+let contacts = [
+    {
+        title: "Marketing",
+        email: "test@yourcompany.com",
+        phone: "+1 (555) 555-5555",
+    },
+    {
+        title: "Human Resources",
+        email: "test@yourcompany.com",
+        phone: "+1 (555) 555-5555",
+    },
+    {
+        title: "Finance",
+        email: "test@yourcompany.com",
+        phone: "+1 (555) 555-5555",
+    },
+    {
+        title: "Research and Development",
+        email: "test@yourcompany.com",
+        phone: "+1 (555) 555-5555",
+    },
+];
+---
+
+<Layout title="Contact">
+	<Container>
+        
+    
+        <div x-data="{
+    showWithdrawalModal: false, 
+    showDepositModal: false, 
+    showEditModal: false, 
+    showFinalConfirmation: false,
+    transactionAmount: 0, 
+    walletBalance: 15, 
+    paymentMethod: '', 
+    user: { 
+        name: 'João Silva', 
+        email: 'joao@gmail.com', 
+        nif: '123456789', 
+        phone: '912345678' 
+    }
+}">
+    <div class="mt-20 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 w-full max-w-4xl flex">
+            <div class="flex-1 flex flex-col items-center text-center">
+                <div class="bg-gray-400 rounded-full h-24 w-24 flex items-center justify-center mb-4">
+                    <span class="text-xl font-medium text-white">João</span>
+                </div>
+                <div class="text-left text-lg ">
+                    <div class="flex justify-between mb-2">
+                        <strong class="mr-4">Nome:</strong>
+                        <span x-text="user.name"></span>
+                    </div>
+                    <div class="flex justify-between mb-2">
+                        <strong class="mr-4">Email:</strong>
+                        <span x-text="user.email"></span>
+                    </div>
+                    <div class="flex justify-between mb-2">
+                        <strong class="mr-4">NIF:</strong>
+                        <span x-text="user.nif"></span>
+                    </div>
+                    <div class="flex justify-between mb-2">
+                        <strong class="mr-4">Telemóvel:</strong>
+                        <span x-text="user.phone"></span>
+                    </div>
+                </div>
+                <button @click="showEditModal = true" class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded mt-4">Editar dados</button>
+            </div>
+            <div class="text-center mt-14 flex-1">
+                <h3 class="text-2xl font-semibold" x-text="'Carteira: ' + walletBalance + ' €'"></h3>
+                <button @click="showWithdrawalModal = true" class="bg-green-500 text-white w-full py-4 px-6 rounded-lg hover:bg-green-600 mt-6 flex justify-center items-center gap-4">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3344/3344862.png" alt="Wallet Icon" class="w-9 h-9 filter invert">
+                    Levantar dinheiro
+                </button>
+                <button @click="showDepositModal = true" class="bg-yellow-400 text-black w-full py-4 px-6 rounded-lg hover:bg-yellow-500 mt-4 flex justify-center items-center gap-4">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4221/4221490.png" alt="Wallet Icon" class="w-9 h-9">
+                    Depositar dinheiro
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- levantar Modal -->
+    <div x-show="showWithdrawalModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center p-4">
+        <div class="bg-white p-4 rounded-lg">
+            <div class="flex justify-center space-x-4 mb-4">
+                <button @click="paymentMethod='mbway'" :class="{'bg-blue-500': paymentMethod === 'mbway'}" class="flex flex-col items-center p-2 rounded shadow">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Logo_MBWay.svg/2560px-Logo_MBWay.svg.png" alt="MBWAY" class="h-8 w-13">
+                    MBWay
+                </button>
+                <button @click="paymentMethod='paypal'" :class="{'bg-blue-500': paymentMethod === 'paypal'}" class="flex flex-col items-center p-2 rounded shadow">
+                    <img src="https://cdn.pixabay.com/photo/2015/05/26/09/37/paypal-784404_1280.png" alt="PayPal" class="h-8 w-13">
+                    PayPal
+                </button>
+                <button @click="paymentMethod='googlepay'" :class="{'bg-blue-500': paymentMethod === 'googlepay'}" class="flex flex-col items-center p-2 rounded shadow">
+                    <img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/GooglePayLogo.width-500.format-webp.webp" alt="Google Pay" class="h-8 w-13">
+                    GooglePay
+                </button>
+            </div>
+            <p class="text-lg text-center mb-4">Insira o montante que deseja levantar:</p>
+            <input type="number" x-model.number="transactionAmount" class="border p-2 rounded w-full" placeholder="Montante em €"/>
+            <div class="mt-4 flex justify-center gap-2">
+                <button @click="showFinalConfirmation = true" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Confirmar</button>
+                <button @click="showWithdrawalModal = false" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final confirmação levantar  Modal -->
+    <div x-show="showFinalConfirmation" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center p-4">
+        <div class="bg-white p-4 rounded-lg">
+            <p class="text-lg mb-4">Tem certeza que deseja levantar esta quantia?</p>
+            <div class="flex justify-center gap-2">
+                <button @click="if (transactionAmount <= walletBalance && transactionAmount > 0) { walletBalance -= transactionAmount; showFinalConfirmation = false; } showWithdrawalModal = false;" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Sim</button>
+                <button @click="showFinalConfirmation = false" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Não</button>
+            </div>
+        </div>
+    </div>
+        
+            <!-- Deposit Modal -->
+            <!-- Deposit Modal -->
+            <!-- Deposit Modal -->
+            <div x-show="showDepositModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center p-4">
+                <div class="bg-white p-4 rounded-lg">
+                    <div class="flex justify-center space-x-4 mb-4">
+                        <!-- Payment method selection for deposit -->
+                        <button @click="paymentMethod='mbway'" :class="{'bg-blue-500': paymentMethod === 'mbway'}" class="flex flex-col items-center p-2 rounded shadow">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Logo_MBWay.svg/2560px-Logo_MBWay.svg.png" alt="MBWAY" class="h-8 w-13">
+                            MBWay
+                        </button>
+                        <button @click="paymentMethod='paypal'" :class="{'bg-blue-500': paymentMethod === 'paypal'}" class="flex flex-col items-center p-2 rounded shadow">
+                            <img src="https://cdn.pixabay.com/photo/2015/05/26/09/37/paypal-784404_1280.png" alt="PayPal" class="h-8 w-13">
+                            PayPal
+                        </button>
+                        <button @click="paymentMethod='googlepay'" :class="{'bg-blue-500': paymentMethod === 'googlepay'}" class="flex flex-col items-center p-2 rounded shadow">
+                            <img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/GooglePayLogo.width-500.format-webp.webp" alt="Google Pay" class="h-8 w-13">
+                            GooglePay
+                        </button>
+                    </div>
+                    <p class="text-lg mb-4">Insira o montante para carregar:</p>
+            <input type="number" x-model.number="transactionAmount" class="border p-2 rounded w-full" placeholder="Montante em €"/>
+            <div class="mt-4 flex justify-center gap-2">
+                <button @click="showFinalConfirmationDeposit = true" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Confirmar</button>
+                <button @click="showDepositModal = false" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Cancelar</button>
+            </div>
+                </div>
+            </div>
+
+            <!-- Final Confirmation Modal for Deposit -->
+    <div x-show="showFinalConfirmationDeposit" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center p-4">
+        <div class="bg-white p-4 rounded-lg">
+            <p class="text-lg mb-4">Tem certeza que deseja depositar esta quantia?</p>
+            <div class="flex justify-center gap-2">
+                <button @click="if (transactionAmount > 0) { walletBalance += parseFloat(transactionAmount); showFinalConfirmationDeposit = false; } showDepositModal = false;" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Sim</button>
+                <button @click="showFinalConfirmationDeposit = false; showDepositModal = false;" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Não</button>
+            </div>
+        </div>
+
+    </div>
+        
+           
+
+            <div x-show="showEditModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center p-4">
+                <div class="bg-white p-4 rounded-lg">
+                    <div class="mb-4">
+                        <label class="block text-lg">Nome:</label>
+                        <input type="text" x-model="user.name" class="border p-2 rounded w-full">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-lg">Email:</label>
+                        <input type="email" x-model="user.email" class="border p-2 rounded w-full">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-lg">NIF:</label>
+                        <input type="text" x-model="user.nif" class="border p-2 rounded w-full">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-lg">Telemóvel:</label>
+                        <input type="text" x-model="user.phone" class="border p-2 rounded w-full">
+                    </div>
+                    <div class="flex justify-center gap-2">
+                        <button @click="showEditModal = false" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Guardar</button>
+                        <button @click="showEditModal = false" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+ 
+        
+
+	</Container>
+</Layout>

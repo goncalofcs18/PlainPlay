@@ -72,6 +72,7 @@ const makeTitle = title ? title + " | " + "Astros" : "Astros - Starter Template 
 
 		{pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
 		<script src="/src/pwa.ts"></script>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 	</head>
 	<body class="dark:bg-stone-950">
 		<Navbar />
@@ -84,5 +85,6 @@ const makeTitle = title ? title + " | " + "Astros" : "Astros - Starter Template 
 				content-visibility: auto;
 			}
 		</style>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 	</body>
 </html>
