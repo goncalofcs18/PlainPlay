@@ -6,13 +6,13 @@ import Link from "@components/ui/link.astro";
 <div class="flex min-h-full items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
 	<div class="w-full max-w-sm space-y-10">
 		<div>
-			<h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-gray-100">Sign in to your account</h2>
+			<h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-gray-100">Inicie sessão na sua conta</h2>
 		</div>
 		<form class="space-y-6" action="#" method="POST">
 			<div class="relative -space-y-px rounded-md shadow-sm">
 				<div class="pointer-events-none absolute inset-0 z-10 rounded-md ring-1 ring-inset ring-gray-300"></div>
 				<div>
-					<label for="email-address" class="sr-only">Email address</label>
+					<label for="email-address" class="sr-only">Endereço de Email</label>
 					<input
 						id="email-address"
 						name="email"
@@ -45,22 +45,22 @@ import Link from "@components/ui/link.astro";
 						type="checkbox"
 						class="h-4 w-4 rounded border-gray-300 text-black focus:text-black accent-stone-950 dark:accent-gray-100"
 					/>
-					<label for="remember-me" class="ml-3 block text-sm leading-6 text-gray-900 dark:text-gray-100">Remember me</label>
+					<label for="remember-me" class="ml-3 block text-sm leading-6 text-gray-900 dark:text-gray-100">Lembrar-me</label>
 				</div>
 
 				<div class="text-sm leading-6">
-					<Link style="muted" href="#" size="xs" class="text-right">Forgot password?</Link>
+					<Link style="muted" href="#" size="xs" class="text-right">Esqueci-me da Password</Link>
 				</div>
 			</div>
 
 			<div>
-				<Button onClick="window.location.href='/'" class="w-full" size="sm">Sign in</Button>
+				<Button onClick="window.location.href='/'" class="w-full" size="sm">Iniciar sessão</Button>
 			</div>
 		</form>
 
 		<p class="text-center text-sm leading-6 text-gray-500">
-			Not a member?
-			<Link style="muted" href="#" size="xs" class="text-left">Sign up</Link>
+			Não tem conta registada?
+			<Link style="muted" href="#" size="xs" class="text-left">Registar-se</Link>
 		</p>
 	</div>
 </div>

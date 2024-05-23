@@ -45,18 +45,36 @@ let contacts = [
     <div class="flex justify-center mt-20"> <!-- Centraliza tudo horizontalmente e adiciona margem no topo -->
       <div class="flex justify-center items-center gap-6 max-w-4xl w-full px-6"> <!-- Contêiner com largura máxima e padding horizontal, agora também justifica o conteúdo ao centro -->
           
-          <div x-data="{ selectedTeam: '', showConfirmation: false }" class="flex justify-center w-full">
+          <div x-data="{ selectedTeam: '', showConfirmation: false }" class="flex justify-center  w-full">
               <!-- Botão principal para abrir o dropdown -->
-              <button id="multiLevelDropdownButton" data-dropdown-toggle="multi-dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-large rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-                  Adicionar Favorito
-                  <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                  </svg>
-              </button>
+              <button id="multiLevelDropdownButton" data-dropdown-toggle="multi-dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-xl rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 -ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                Adicionar Favorito
+            </button>
 
               <!-- Dropdown menu -->
-              <div id="multi-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+              <div id="multi-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 font-semibold dark:bg-gray-700">
                   <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="multiLevelDropdownButton">
+                    <li>
+                      <button id="doubleDropdownButton5" data-dropdown-toggle="doubleDropdown5" data-dropdown-placement="right-start" type="button" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                          Basquetebol
+                          <svg class="w-2.5 h-2.5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                          </svg>
+                      </button>
+                      <div id="doubleDropdown5" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
+                              <li><a href="#" @click="selectedTeam = 'Boston Celtics'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Boston Celtics</a></li>
+                              <li><a href="#" @click="selectedTeam = 'Chicago Bulls'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Chicago Bulls</a></li>
+                              <li><a href="#" @click="selectedTeam = 'Denver Nuggets'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Denver Nuggets</a></li>
+                              <li><a href="#" @click="selectedTeam = 'Chelsea'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Indiana Pacers</a></li>
+                              <li><a href="#" @click="selectedTeam = 'Tottenham'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Los Angeles Lakers</a></li>
+                          </ul>
+                      </div>
+                  </li>
+
                       <li>
                           <button id="doubleDropdownButton3" data-dropdown-toggle="doubleDropdown3" data-dropdown-placement="right-start" type="button" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                               Futebol
@@ -66,6 +84,8 @@ let contacts = [
                           </button>
                           <div id="doubleDropdown3" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                               <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
+                                  <li><a href="#" @click="selectedTeam = 'Chelsea'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">AC Milan</a></li>
+                                  <li><a href="#" @click="selectedTeam = 'Chelsea'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Boavista FC</a></li>
                                   <li><a href="#" @click="selectedTeam = 'Chelsea'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Chelsea</a></li>
                                   <li><a href="#" @click="selectedTeam = 'FC Porto'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">FC Porto</a></li>
                                   <li><a href="#" @click="selectedTeam = 'Sporting CP'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sporting CP</a></li>
@@ -73,6 +93,43 @@ let contacts = [
                               </ul>
                           </div>
                       </li>
+
+                      <li>
+                          <button id="doubleDropdownButton4" data-dropdown-toggle="doubleDropdown4" data-dropdown-placement="right-start" type="button" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                              Ténis
+                              <svg class="w-2.5 h-2.5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                              </svg>
+                          </button>
+                          <div id="doubleDropdown4" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
+                                  <li><a href="#" @click="selectedTeam = 'Chelsea'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Chelsea</a></li>
+                                  <li><a href="#" @click="selectedTeam = 'FC Porto'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">FC Porto</a></li>
+                                  <li><a href="#" @click="selectedTeam = 'Sporting CP'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sporting CP</a></li>
+                                  <li><a href="#" @click="selectedTeam = 'Tottenham'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Tottenham</a></li>
+                              </ul>
+                          </div>
+                      </li>
+                      
+
+                    <li>
+                      <button id="doubleDropdownButton6" data-dropdown-toggle="doubleDropdown6" data-dropdown-placement="right-start" type="button" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                          E Sports
+                          <svg class="w-2.5 h-2.5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                          </svg>
+                      </button>
+                      <div id="doubleDropdown6" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
+                              <li><a href="#" @click="selectedTeam = 'Chelsea'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">100 Thieves</a></li>
+                              <li><a href="#" @click="selectedTeam = 'FC Porto'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cloud9</a></li>
+                              <li><a href="#" @click="selectedTeam = 'Sporting CP'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">G2 ESports</a></li>
+                              <li><a href="#" @click="selectedTeam = 'Tottenham'; showConfirmation = true; $event.stopPropagation()" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Take Flyte</a></li>
+                          </ul>
+                      </div>
+                  </li>
+
+                  
                   </ul>
               </div>
 
@@ -82,7 +139,7 @@ let contacts = [
                       <p x-text="'Tem certeza que deseja adicionar ' + selectedTeam + ' aos favoritos?'"></p>
                       <div class="w-full mt-4 flex flex-row items gap-4 justify-center content-center">
                         <a @click="showConfirmation = false" class="bg-green-500 text-white px-4 py-2 rounded" href={localizePath("/favoritos2")}>Confirmar</a>
-                        <button @click="showConfirmation = false" class="bg-red-500 text-white px-4 py-2 rounded">cancelar</button>
+                        <button @click="showConfirmation = false" class="bg-red-500 text-white px-4 py-2 rounded">Cancelar</button>
                       </div>
                   </div>
               </div>
